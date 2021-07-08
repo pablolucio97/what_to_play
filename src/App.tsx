@@ -9,7 +9,7 @@ import light from './themes/light'
 
 const App = () => {
 
-    const [theme, setTheme] = usePersistTheme('theme', light)
+    const [theme, setTheme] = usePersistTheme('what-to-play:theme', light)
 
     function toggleTheme(){
         setTheme(theme.title === 'light' ? dark : light)
