@@ -9,7 +9,7 @@ export const GlobalStyles = createGlobalStyle`
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        background: #fff;
+        background: ${props => props.theme.colors.background};
         overflow-x: hidden;
     }
 

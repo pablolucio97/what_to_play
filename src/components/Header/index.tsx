@@ -1,34 +1,30 @@
 import { ChangeEvent } from 'react'
 import { useContext } from 'react'
+import { ThemeContext } from 'styled-components'
 import {
     TitleContainer,
     Container,
     Title,
     MenuContainer,
-    Linker,
     Search,
     Button
 } from './styles'
 import { BiJoystickButton, BiHeart } from 'react-icons/bi'
+import Switch from 'react-switch'
 
 
 
-type SearchProps = {
+type HeaderProps = {
     search?: (e: ChangeEvent<HTMLInputElement>) => void;
+    toggleTheme():void;
 }
 
-const Index = ({ search }: SearchProps) => {
+
+const Index = ({ search, toggleTheme }: HeaderProps) => {
 
 
 
- /*    const { title } = useContext(ThemeContext)
-
-    const [currentTheme, setTheme] = userPersistThemeState('theme', dark)
-
-    function handleTheme(){
-        setTheme(currentTheme.title === 'dark' ? light : dark)
-      }
-   */
+       const { title, colors } = useContext(ThemeContext)
    
 
 
@@ -36,19 +32,19 @@ const Index = ({ search }: SearchProps) => {
         <Container>
             <TitleContainer>
                 <BiJoystickButton size={32} color='#fff' />
+                <Title>WhatToPlay</Title>
             </TitleContainer>
             <MenuContainer>
-       {/*          <Switcher
-                    checked={currentTheme.title === 'dark' ? true : false}
-                    onChange={handleTheme}
+                <Switch
+                    checked={title === 'light' ? false : true}
+                    onChange={toggleTheme}
                     width={45}
                     handleDiameter={22}
                     height={15}
                     checkedIcon={false}
                     uncheckedIcon={false}
-                    onColor={light.colors.primary1}
-                    offColor={light.colors.gray2}
-                /> */}
+                    onColor={colors.secondary1}
+                />
 
             </MenuContainer>
         </Container>
