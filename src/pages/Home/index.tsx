@@ -21,6 +21,12 @@ import {
 import { useFavoritesList } from '../../hooks/useFavoritesList'
 import { useHistory } from 'react-router-dom'
 import { AiOutlineGoogle } from 'react-icons/ai'
+import {
+  renderMostPlayedGames,
+  renderRecentAddedGames,
+  renderReleasesGames
+} from '../../utils/renderRandomGames'
+import { favoriteGamesTypes } from '../../types/favoriteGamesTypes'
 
 
 
@@ -29,6 +35,7 @@ const Home = () => {
   const [mostPlayed, setMostPlayed] = useState<gameCardTypes[]>([])
   const [recentAdded, setRecentAdded] = useState<gameCardTypes[]>([])
   const [releases, setReleases] = useState<gameCardTypes[]>([])
+  const [favoritedGames, setFavoritedGames] = useState([''])
 
   const requestOptions = {
     url: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
@@ -43,18 +50,18 @@ const Home = () => {
 
   useEffect(() => {
     axios.get<gameCardTypes[]>('https://free-to-play-games-database.p.rapidapi.com/api/games',
-      requestOptions).then(response => setMostPlayed(response.data.slice(0, 5)))
+      requestOptions).then(response => setMostPlayed(renderMostPlayedGames(response.data)))
     //eslint-disable-next-line
-  }, [mostPlayed])
-
-  useEffect(() => {
-    axios.get<gameCardTypes[]>('https://free-to-play-games-database.p.rapidapi.com/api/games')
-      .then(response => setRecentAdded(response.data.slice(0, 8)))
   }, [])
 
   useEffect(() => {
     axios.get<gameCardTypes[]>('https://free-to-play-games-database.p.rapidapi.com/api/games')
-      .then(response => setReleases(response.data.slice(0, 3)))
+      .then(response => setRecentAdded(renderRecentAddedGames(response.data)))
+  }, [])
+
+  useEffect(() => {
+    axios.get<gameCardTypes[]>('https://free-to-play-games-database.p.rapidapi.com/api/games')
+      .then(response => setReleases(renderReleasesGames(response.data)))
   }, [])
 
   const history = useHistory()
@@ -129,7 +136,8 @@ const Home = () => {
                 title={game.title}
                 thumbnail={game.thumbnail}
                 freetogame_profile_url={game.freetogame_profile_url}
-                actionLabelText='Favorit it'
+                actionLabelText={favoritedGames.includes(String(game.id))? 'Favorited' : 'Favorite'}
+                isInactiveButton={favoritedGames.includes(String(game.id))? true : false}
                 addToFavorites={
                   () => {
                     const newFavorite = {
@@ -139,7 +147,15 @@ const Home = () => {
                       freetogame_profile_url: game.freetogame_profile_url
                     }
 
-                    setFavoritesList([...favoritesList, newFavorite])
+                    console.log(newFavorite)
+                    console.log(favoritesList)
+
+                    if(favoritedGames.includes(String(newFavorite.id))){
+                      return
+                    }else{
+                      setFavoritesList([...favoritesList, newFavorite])
+                      setFavoritedGames([...favoritedGames, String(newFavorite.id) ])
+                    }
                   }
                 }
               />
