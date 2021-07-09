@@ -14,6 +14,7 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: 1.4rem;
-  color: ${props => props.theme.colors.gray2};
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: ${props => props.theme.colors.text};
   `

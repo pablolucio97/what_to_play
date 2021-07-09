@@ -72,16 +72,6 @@ export const MiddleContentContainer = styled.div`
   }
 `;
 
-export const FoundGamesContainer = styled.div`
-  display: flex;
-  margin: 4rem auto 2rem;
-  width: 100%;
-  height: 60vh;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-`;
-
 export const RecentGamesContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -92,70 +82,76 @@ export const MostPlayedGamesContainer = styled.div`
   flex-direction: column;
 `;
 
-export const LibraryContainer = styled.div`
+export const GoogleButton = styled.button`
+  width: 160px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: .96rem;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  width: 1000px;
-  background: ${(props) => props.theme.colors.gray};
-  border-radius: 4px;
-  margin: 2rem auto;
-  padding: 1rem;
-
-  @media (max-width: 1240px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 640px;
-    margin-top: 3rem;
-    padding: 0;
-  }
-
-  @media (max-width: 720px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 340px;
-    margin-top: 3rem;
-    padding: 0;
-  }
-`;
-
-export const LibraryPageContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 1120px;
-  background: ${(props) => props.theme.colors.background};
-  border-radius: 4px;
-  margin: 3rem auto;
-  padding: 1rem;
-  
-  @media (max-width: 1240px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 700px;
-    padding: 0;
-  }
-
-  @media (max-width: 720px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 340px;
-    background: ${(props) => props.theme.colors.gray};
-  }
-`;
-
-export const EmptyLibraryContainer = styled.div`
-  display: flex;
   justify-content: center;
-  align-items: center;
-  font-size: 1rem;
+  background: #ea4335;
   color: #fff;
-  width: 80%;
-  height: 610px;
-  background: ${(props) => props.theme.colors.gray};
-  border-radius: 4px;
-  margin: 1rem auto;
+  transition: all 0.2s ease-in-out;
+  padding: .4rem;
+  margin: 1rem;
+  border: none;
+  outline: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media (max-width: 720px) {
+    margin: 1rem;
+  }
 `;
+
+export const LibraryButton = styled.button`
+  width: 160px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: .96rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: ${props => props.theme.colors.secondary1};
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+  padding: .4rem;
+  margin: 1rem;
+  border: none;
+  outline: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media (max-width: 720px) {
+    margin: 1rem;
+  }
+`;
+
+export const LoginContainer = styled.div`
+
+  width: 98%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 1rem;
+  margin-top: 1.2rem;
+   span{
+    color: ${props => props.theme.colors.text};
+    font-weight: 400;
+   }
+
+   @media (max-width: 720px) {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 1rem auto -3rem;
+  }
+`
+
+

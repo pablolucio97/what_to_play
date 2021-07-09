@@ -2,7 +2,8 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
     *{
-        font-family: 'Lato', sans-serif;
+        font-family: 'Oswald', sans-serif;
+        letter-spacing: .04rem;
     }
 
     body{

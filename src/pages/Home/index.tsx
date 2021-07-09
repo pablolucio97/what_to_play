@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
+
 import MostPlayCard from '../../components/MostPlayCard'
 import RecentAddedsCard from '../../components/RecentAddedsCard'
 import Card from '../../components/GameCard'
@@ -11,8 +12,16 @@ import {
   ReleasesContainer,
   MiddleContentContainer,
   MostPlayedGamesContainer,
-  RecentGamesContainer
+  RecentGamesContainer,
+  GoogleButton,
+  LoginContainer,
+  LibraryButton
 } from './styles'
+
+import { useFavoritesList } from '../../hooks/useFavoritesList'
+import { useHistory } from 'react-router-dom'
+import { AiOutlineGoogle } from 'react-icons/ai'
+
 
 
 const Home = () => {
@@ -28,6 +37,8 @@ const Home = () => {
       'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com'
     }
   };
+
+  const { favoritesList, setFavoritesList } = useFavoritesList()
 
 
   useEffect(() => {
@@ -46,10 +57,29 @@ const Home = () => {
       .then(response => setReleases(response.data.slice(0, 3)))
   }, [])
 
+  const history = useHistory()
 
   return (
     <>
       <TopContainer>
+        <LoginContainer>
+          {
+            1 + 1 === 3 ?
+            <>
+            <span>Do login for favorite and store your favorite games</span>
+                <GoogleButton >
+                  <AiOutlineGoogle size={24} style={{ marginRight: 4 }} />
+                  Login with Google
+                </GoogleButton>
+              </>
+              :
+              <>
+                <LibraryButton onClick={() => history.push('/library')}>
+                  Go to library
+                </LibraryButton>
+              </>
+          }
+        </LoginContainer>
         <Title
           title='Releases'
         />
@@ -58,6 +88,7 @@ const Home = () => {
             releases.map(game => (
               <Card
                 id={game.id}
+                key={game.id}
                 title={game.title}
                 thumbnail={game.thumbnail}
                 freetogame_profile_url={game.freetogame_profile_url}
@@ -76,6 +107,7 @@ const Home = () => {
             recentAdded.map(game => (
               <RecentAddedsCard
                 id={game.id}
+                key={game.id}
                 title={game.title}
                 thumbnail={game.thumbnail}
                 freetogame_profile_url={game.freetogame_profile_url}
@@ -93,9 +125,23 @@ const Home = () => {
             mostPlayed.map(game => (
               <MostPlayCard
                 id={game.id}
+                key={game.id}
                 title={game.title}
                 thumbnail={game.thumbnail}
                 freetogame_profile_url={game.freetogame_profile_url}
+                actionLabelText='Favorit it'
+                addToFavorites={
+                  () => {
+                    const newFavorite = {
+                      id: game.id,
+                      title: game.title,
+                      thumbnail: game.thumbnail,
+                      freetogame_profile_url: game.freetogame_profile_url
+                    }
+
+                    setFavoritesList([...favoritesList, newFavorite])
+                  }
+                }
               />
 
             ))
