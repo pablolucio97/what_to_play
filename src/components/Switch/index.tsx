@@ -1,7 +1,4 @@
 import Switcher from 'react-switch'
-import {} from 'styled-components'
-
-
 
 export const Switch = () => {
 
@@ -19,7 +16,6 @@ export const Switch = () => {
         height={15}
         checkedIcon={false}
         uncheckedIcon={false}
-    
     />
     )
 }

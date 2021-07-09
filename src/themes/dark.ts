@@ -1,7 +1,7 @@
 const dark = {
     title: 'dark',
     colors: {
-        background: '#222',
+        background: '#111',
         text: '#fff',
         primary1: '#2391ff',
         primary2: '#4e9ae6',
