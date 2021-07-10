@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-
 import MostPlayCard from '../../components/MostPlayCard'
 import RecentAddedsCard from '../../components/RecentAddedsCard'
+import { UserInfo } from '../../components/UserInfo'
 import Card from '../../components/GameCard'
 import Title from '../../components/Title'
 import { gameCardTypes } from '../../types/gameCardTypes'
@@ -26,7 +26,8 @@ import {
   renderRecentAddedGames,
   renderReleasesGames
 } from '../../utils/renderRandomGames'
-import { favoriteGamesTypes } from '../../types/favoriteGamesTypes'
+
+import { useAuth } from '../../hooks/useAuth'
 
 
 
@@ -47,6 +48,7 @@ const Home = () => {
 
   const { favoritesList, setFavoritesList } = useFavoritesList()
 
+  const { signInWithGoogle, user } = useAuth()
 
   useEffect(() => {
     axios.get<gameCardTypes[]>('https://free-to-play-games-database.p.rapidapi.com/api/games',
@@ -66,24 +68,40 @@ const Home = () => {
 
   const history = useHistory()
 
+  async function doLoginWithGoogle() {
+    if (!user) {
+      await signInWithGoogle()
+    }
+  }
+
   return (
     <>
+
       <TopContainer>
         <LoginContainer>
           {
-            1 + 1 === 3 ?
-            <>
-            <span>Do login for favorite and store your favorite games</span>
-                <GoogleButton >
+            !user ?
+              <>
+                <span>Do login for favorite and store your favorite games</span>
+                <GoogleButton onClick={doLoginWithGoogle}>
                   <AiOutlineGoogle size={24} style={{ marginRight: 4 }} />
                   Login with Google
                 </GoogleButton>
               </>
               :
               <>
-                <LibraryButton onClick={() => history.push('/library')}>
-                  Go to library
-                </LibraryButton>
+                <UserInfo 
+                  name={user.name}
+                  avatar={user.avatar}
+                  id={user.id}
+                  
+                >
+                  <LibraryButton
+                    onClick={() => history.push('/library')}
+                  >
+                    Go to library
+                  </LibraryButton>
+                </UserInfo>
               </>
           }
         </LoginContainer>
@@ -136,8 +154,8 @@ const Home = () => {
                 title={game.title}
                 thumbnail={game.thumbnail}
                 freetogame_profile_url={game.freetogame_profile_url}
-                actionLabelText={favoritedGames.includes(String(game.id))? 'Favorited' : 'Favorite'}
-                isInactiveButton={favoritedGames.includes(String(game.id))? true : false}
+                actionLabelText={favoritedGames.includes(String(game.id)) ? 'Favorited' : 'Favorite'}
+                isInactiveButton={favoritedGames.includes(String(game.id)) ? true : false}
                 addToFavorites={
                   () => {
                     const newFavorite = {
@@ -150,11 +168,11 @@ const Home = () => {
                     console.log(newFavorite)
                     console.log(favoritesList)
 
-                    if(favoritedGames.includes(String(newFavorite.id))){
+                    if (favoritedGames.includes(String(newFavorite.id))) {
                       return
-                    }else{
+                    } else {
                       setFavoritesList([...favoritesList, newFavorite])
-                      setFavoritedGames([...favoritedGames, String(newFavorite.id) ])
+                      setFavoritedGames([...favoritedGames, String(newFavorite.id)])
                     }
                   }
                 }

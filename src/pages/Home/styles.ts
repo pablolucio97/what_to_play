@@ -12,14 +12,16 @@ export const TopContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 420px;
+    width: 720px;
     margin-top: -1rem;
   }
 
   @media (max-width: 720px) {
     width: 240px;
     display: flex;
+    justify-content: flex-start;
     align-items: center;
+    margin: 0 auto;
   }
 `;
 
@@ -116,12 +118,15 @@ export const LibraryButton = styled.button`
   align-items: center;
   justify-content: center;
   background: ${props => props.theme.colors.secondary1};
-  color: #fff;
   transition: all 0.2s ease-in-out;
   padding: .4rem;
   margin: 1rem;
   border: none;
   outline: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: ${props => props.theme.colors.text};
+  letter-spacing: .04rem;
 
   &:hover {
     cursor: pointer;

@@ -11,19 +11,22 @@ import FavoriteGame from '../../components/FavoriteGame'
 import { useFavoritesList } from '../../hooks/useFavoritesList'
 import {AiOutlineArrowLeft} from 'react-icons/ai'
 import {useHistory} from 'react-router-dom'
+import { useEffect } from 'react'
 
 
 const Library = () => {
 
-    const { favoritesList } = useFavoritesList()
+    const { favoritesList, setFavoritesList } = useFavoritesList()
 
     const history = useHistory()
+
+
 
     return (
         <LibraryPageContainer>
             <ButtonContainer onClick={() => history.push('/')}>
                 <button>
-                    <AiOutlineArrowLeft size={32}/>
+                    <AiOutlineArrowLeft size={32} color='#ff7723'/>
                 </button>
             </ButtonContainer>
             <Title
@@ -49,6 +52,12 @@ const Library = () => {
                                 title={favorite.title}
                                 thumbnail={favorite.thumbnail}
                                 freetogame_profile_url={favorite.freetogame_profile_url}
+                                removeFromFavorites={() => {
+                                const filteredFavorites = favoritesList.filter(unfavorite =>
+                                    unfavorite.id !== favorite.id
+                                    )
+                                    setFavoritesList(filteredFavorites)
+                                }}
                             />
                         ))
                 }
