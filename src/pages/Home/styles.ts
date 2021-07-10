@@ -125,7 +125,7 @@ export const LibraryButton = styled.button`
   outline: none;
   text-transform: uppercase;
   font-weight: bold;
-  color: ${props => props.theme.colors.text};
+  color: ${props => props.theme.colors.gray};
   letter-spacing: .04rem;
 
   &:hover {

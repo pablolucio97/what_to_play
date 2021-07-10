@@ -14,11 +14,12 @@ export const FoundGamesContainer = styled.div`
 export const LibraryContainer = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   width: 1000px;
   background: ${(props) => props.theme.colors.gray};
   border-radius: 4px;
-  margin: 2rem auto;
+  margin: 1rem auto;
   padding: 1rem;
   
   @media (max-width: 1240px) {
@@ -43,13 +44,12 @@ export const LibraryContainer = styled.div`
 export const LibraryPageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  justify-content: center;
   overflow: hidden;
   width: 1120px;
-  background: ${(props) => props.theme.colors.background};
   border-radius: 4px;
-  margin: 3rem auto;
-  padding: 1rem;
+  margin: 0 auto;
+  padding: 2rem;
   
   @media (max-width: 1240px) {
     display: flex;
@@ -65,6 +65,8 @@ export const LibraryPageContainer = styled.div`
     align-items: center;
     width: 340px;
     background: ${(props) => props.theme.colors.gray};
+    color: #fff;
+    margin: 2rem auto;
   }
 `;
 

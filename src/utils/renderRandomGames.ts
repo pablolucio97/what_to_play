@@ -5,7 +5,7 @@ export function renderMostPlayedGames(gamesList: gameCardTypes[]){
 }
 
 export function renderRecentAddedGames(gamesList: gameCardTypes[]){
-    return gamesList.sort(() => Math.random() - 0.5).slice(0, 10)
+    return gamesList.sort(() => Math.random() - 0.5).slice(0, 9)
 }
 
 export function renderReleasesGames(gamesList: gameCardTypes[]){

@@ -4,7 +4,7 @@ export const UserContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: ${props => props.theme.colors.primary1};
+    background: ${props => props.theme.colors.gray};
     border-bottom: 2px solid  ${props => props.theme.colors.secondary1};
     width: 98%;
     height: 48px;
@@ -40,8 +40,8 @@ export const Avatar = styled.img`
     margin: 1rem;
 `
 
-export const UserName = styled.span`
+export const UserName = styled.p`
     font-size: 1.2rem;
     color: #fff;
-    font-weight: 600;
+    font-weight: 400;
 `

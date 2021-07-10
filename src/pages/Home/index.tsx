@@ -74,6 +74,18 @@ const Home = () => {
     }
   }
 
+  localStorage.setItem("what-to-play:favorites", JSON.stringify(favoritesList));
+
+  const storedFavorites = localStorage.getItem("what-to-play:favorites");
+
+  useEffect(() => {
+
+          if (storedFavorites) {
+              setFavoritesList(JSON.parse(storedFavorites));
+          }
+    
+  }, [setFavoritesList, storedFavorites]);
+
   return (
     <>
 
@@ -144,7 +156,7 @@ const Home = () => {
         <MostPlayedGamesContainer>
 
           <Title
-            title='You has been played most'
+            title='You can to like'
           />
           {
             mostPlayed.map(game => (

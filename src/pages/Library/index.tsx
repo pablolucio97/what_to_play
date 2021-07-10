@@ -9,9 +9,9 @@ import {
 import Title from '../../components/Title'
 import FavoriteGame from '../../components/FavoriteGame'
 import { useFavoritesList } from '../../hooks/useFavoritesList'
-import {AiOutlineArrowLeft} from 'react-icons/ai'
-import {useHistory} from 'react-router-dom'
-import { useEffect } from 'react'
+import { AiOutlineArrowLeft } from 'react-icons/ai'
+import { useHistory } from 'react-router-dom'
+import {usePersistFavorites} from '../../utils/usePersistFavoritesList'
 
 
 const Library = () => {
@@ -20,13 +20,15 @@ const Library = () => {
 
     const history = useHistory()
 
+    const [favorites] = usePersistFavorites('what-to-play:favorites', favoritesList)
 
+    setFavoritesList(favorites)
 
     return (
         <LibraryPageContainer>
             <ButtonContainer onClick={() => history.push('/')}>
                 <button>
-                    <AiOutlineArrowLeft size={32} color='#ff7723'/>
+                    <AiOutlineArrowLeft size={32} color='#ff7723' />
                 </button>
             </ButtonContainer>
             <Title
@@ -43,7 +45,7 @@ const Library = () => {
                 {
                     favoritesList.length === 0 ?
                         <EmptyLibraryContainer>
-                            <h3>You library is empty.</h3>
+                            <h3>You library is empty. Go to Home to add games to your library.</h3>
                         </EmptyLibraryContainer>
                         :
                         favoritesList.map(favorite => (
@@ -53,8 +55,8 @@ const Library = () => {
                                 thumbnail={favorite.thumbnail}
                                 freetogame_profile_url={favorite.freetogame_profile_url}
                                 removeFromFavorites={() => {
-                                const filteredFavorites = favoritesList.filter(unfavorite =>
-                                    unfavorite.id !== favorite.id
+                                    const filteredFavorites = favoritesList.filter(unfavorite =>
+                                        unfavorite.id !== favorite.id
                                     )
                                     setFavoritesList(filteredFavorites)
                                 }}
