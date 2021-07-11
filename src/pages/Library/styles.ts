@@ -1,16 +1,6 @@
 import styled from 'styled-components'
 
 
-export const FoundGamesContainer = styled.div`
-  display: flex;
-  margin: 4rem auto 2rem;
-  width: 100%;
-  height: 60vh;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-`;
-
 export const LibraryContainer = styled.div`
   display: flex;
   flex-direction: column;

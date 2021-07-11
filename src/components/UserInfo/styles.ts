@@ -6,7 +6,7 @@ export const UserContainer = styled.div`
     justify-content: space-between;
     background: ${props => props.theme.colors.gray};
     border-bottom: 2px solid  ${props => props.theme.colors.secondary1};
-    width: 98%;
+    width: 1160px;
     height: 48px;
     padding: .4rem;
     margin: 0 auto;

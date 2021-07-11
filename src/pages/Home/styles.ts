@@ -63,6 +63,7 @@ export const MiddleContentContainer = styled.div`
     align-items: center;
     width: 720px;
     margin-top: -1rem;
+    margin-bottom: 2rem;
   }
 
   @media (max-width: 720px) {
@@ -109,7 +110,7 @@ export const GoogleButton = styled.button`
   }
 `;
 
-export const LibraryButton = styled.button`
+export const Button = styled.button`
   width: 160px;
   border-radius: 8px;
   font-weight: 500;
@@ -156,6 +157,48 @@ export const LoginContainer = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
     margin: 1rem auto -3rem;
+  }
+`
+
+export const FoundGamesContainer = styled.div`
+  display: flex;
+  margin: 4rem auto 2rem;
+  width: 100%;
+  height: 60vh;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+export const SearchContainer = styled.div`
+  width: 110%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  @media (max-width: 1240px) {
+    margin: 0 auto -1rem;
+  }
+  @media (max-width: 720px) {
+    margin: 3rem 0 -3rem;
+  }
+`;
+
+export const Search = styled.input`
+  width: 320px;
+  height: 32px;
+  background: ${(props) => props.theme.colors.gray};
+  color: #fff;
+  border-radius: 2px;
+  padding: .3rem .4rem;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  margin-left: 1rem;
+  @media (max-width: 1240px) {
+    margin-left: 1.8rem;
+  }
+  @media (max-width: 720px) {
+    margin-left: 0;
   }
 `
 

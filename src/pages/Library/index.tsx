@@ -1,6 +1,5 @@
 import {
     EmptyLibraryContainer,
-    FoundGamesContainer,
     LibraryContainer,
     LibraryPageContainer,
     ButtonContainer
@@ -11,16 +10,16 @@ import FavoriteGame from '../../components/FavoriteGame'
 import { useFavoritesList } from '../../hooks/useFavoritesList'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { useHistory } from 'react-router-dom'
-import {usePersistFavorites} from '../../utils/usePersistFavoritesList'
+import { usePersistFavorites } from '../../utils/usePersistFavoritesList'
 
 
 const Library = () => {
+    
+    const history = useHistory()
 
     const { favoritesList, setFavoritesList } = useFavoritesList()
 
-    const history = useHistory()
-
-    const [favorites] = usePersistFavorites('what-to-play:favorites', favoritesList)
+    const [favorites, setFavorites] = usePersistFavorites('what-to-play:favorites', favoritesList)
 
     setFavoritesList(favorites)
 
@@ -34,13 +33,6 @@ const Library = () => {
             <Title
                 title='My favorite games'
             />
-            {
-                1 + 1 === 2 ?
-                    null
-                    :
-                    <FoundGamesContainer>
-                    </FoundGamesContainer>
-            }
             <LibraryContainer>
                 {
                     favoritesList.length === 0 ?
@@ -58,7 +50,7 @@ const Library = () => {
                                     const filteredFavorites = favoritesList.filter(unfavorite =>
                                         unfavorite.id !== favorite.id
                                     )
-                                    setFavoritesList(filteredFavorites)
+                                    setFavorites(filteredFavorites)
                                 }}
                             />
                         ))

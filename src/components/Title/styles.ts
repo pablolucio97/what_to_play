@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   justify-content: flex-start;
-  margin: .4rem 1rem;
+  margin: .4rem 1.4rem;
 
   @media (max-width: 1240px) {
     margin: 3rem auto 0;

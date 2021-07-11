@@ -1,13 +1,13 @@
 import { GlobalStyles } from './GlobalStyle'
 import Routes from './routes/routes'
 import { ThemeProvider } from 'styled-components'
-import usePersistTheme from './utils/usePersistTheme'
-import Header from './components/Header'
 
 import dark from './themes/dark'
 import light from './themes/light'
 import { FavoriteContextProvider } from './context/FavoriteGames/FavoriteGamesContext'
 import { AuthContextProvider } from './context/Auth/AuthContext'
+import usePersistTheme from './utils/usePersistTheme'
+import Header from './components/Header'
 
 
 const App = () => {

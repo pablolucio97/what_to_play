@@ -19,6 +19,13 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     margin: 0 auto 1rem;
+    &:after{
+      content:'';
+      width: 620px;
+      height: 100%;
+      background: ${props => props.theme.colors.gray};
+      margin-top: 1rem;
+    }
   }
 
   @media (max-width: 720px) {
@@ -38,7 +45,7 @@ export const Img = styled.img`
   filter: opacity(0.75);
 
   @media (max-width: 1240px) {
-    width: 640px;
+    width: 100%;
     height: 100%;
     margin-top: 1rem;
   }
@@ -81,6 +88,11 @@ export const ButtonAddFav = styled.button`
     cursor: not-allowed;
   }
 
+  @media (max-width: 1240px) {
+    bottom: 3rem;
+    right: 2.4rem;
+  }
+
   @media (max-width: 720px) {
     bottom: 5rem;
     right: -1rem;
@@ -113,11 +125,17 @@ export const ButtonPlay = styled.button`
   &:active {
     transform: scale(0.98);
   }
-
-  @media (max-width: 720px) {
-    bottom: 7rem;
-    right: -1rem;
+  
+  @media (max-width: 1240px) {
+    bottom: 6.4rem;
+    right: 2.4rem;
   }
+  
+    @media (max-width: 720px) {
+      bottom: 7rem;
+      right: -1rem;
+    }
+
 `;
 
 
