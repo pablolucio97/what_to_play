@@ -169,7 +169,7 @@ const Home = () => {
             <MostPlayedGamesContainer>
 
               <Title
-                title='You can to like'
+                title='You might like'
               />
               {
                 mostPlayed.map(game => (
@@ -189,9 +189,9 @@ const Home = () => {
                           thumbnail: game.thumbnail,
                           freetogame_profile_url: game.freetogame_profile_url
                         }
-
+                        console.log(favoritesList.length)
                         if (favoritedGames.includes(String(newFavorite.id))) {
-                          return
+                         return
                         } else {
                           setFavoritesList([...favoritesList, newFavorite])
                           setFavoritedGames([...favoritedGames, String(newFavorite.id)])

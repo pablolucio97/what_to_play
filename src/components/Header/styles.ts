@@ -11,9 +11,9 @@ export const Container = styled.div`
   border-bottom: 1px solid ${(props) => props.theme.colors.secondary1};
   box-shadow: 0 0 8px #000;
   @media (max-width: 720px) {
-    height: 80px;
+    height: 40px;
   }
-`;
+  `;
 
 export const TitleContainer = styled.div`
   display: flex;
@@ -21,11 +21,14 @@ export const TitleContainer = styled.div`
   align-items: center;
   margin-left: 1rem;
 
+ 
+  
   @media (max-width: 720px) {
     flex-direction: column;
     align-items: center;
     margin-left: 0;
     margin-top: 0.4rem;
+    padding: 1rem;
   }
 `;
 

@@ -5,7 +5,6 @@ import {
     ButtonContainer
 } from './styles'
 
-import Title from '../../components/Title'
 import FavoriteGame from '../../components/FavoriteGame'
 import { useFavoritesList } from '../../hooks/useFavoritesList'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
@@ -30,9 +29,7 @@ const Library = () => {
                     <AiOutlineArrowLeft size={32} color='#ff7723' />
                 </button>
             </ButtonContainer>
-            <Title
-                title='My favorite games'
-            />
+            <h1>My favorite games</h1>
             <LibraryContainer>
                 {
                     favoritesList.length === 0 ?
