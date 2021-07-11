@@ -8,12 +8,12 @@ export const Container = styled.div`
   margin:  .4rem;
   margin-top: 1rem;
   transition: all 0.2s ease-in-out;
-
+  
   &:hover {
     transform: scale(1.02);
     cursor: pointer;
   }
-
+  
   @media (max-width: 1240px) {
     width: 640px;
     display: flex;
@@ -25,9 +25,10 @@ export const Container = styled.div`
       height: 100%;
       background: ${props => props.theme.colors.gray};
       margin-top: 1rem;
+      border-radius: 0 4px 4px 0;
     }
   }
-
+  
   @media (max-width: 720px) {
     width: 240px;
     display: flex;
@@ -36,24 +37,27 @@ export const Container = styled.div`
     margin: 0 auto -3rem;
   }
   
-`;
+  `;
 
 export const Img = styled.img`
   width: 365px;
   height: 206px;
   z-index: -1;
   filter: opacity(0.75);
-
+  border-radius: 4px;
+  
   @media (max-width: 1240px) {
     width: 100%;
     height: 100%;
     margin-top: 1rem;
+    border-radius: 4px 0 0  4px;
   }
 
   @media (max-width: 720px) {
     width: 286px;
     height: 160px;
     margin-top: 0;
+    border-radius: 4px;
   }
 `;
 
